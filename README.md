@@ -1,4 +1,4 @@
 # mydemo
 this is my first git repository.
 <br>
-Author: Gauri
+Author: Gauri Pai
