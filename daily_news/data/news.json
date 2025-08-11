@@ -1,0 +1,134 @@
+{
+  "featured": [
+    {
+      "id": "f1",
+      "title": "Global Markets Rally as Tech Stocks Surge",
+      "description": "Investors cheer strong earnings; analysts remain cautiously optimistic.",
+      "content": "Global markets rallied today driven by gains in major tech companies. Analysts cited robust earnings and improved guidance as key drivers. Despite the optimism, some warn of potential volatility ahead as central banks weigh further policy shifts...",
+      "imageUrl": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1400&auto=format&fit=crop",
+      "category": "Business",
+      "date": "2025-08-01T09:00:00Z"
+    },
+    {
+      "id": "f2",
+      "title": "Breakthrough in Renewable Energy Storage",
+      "description": "New battery tech promises longer life and faster charging.",
+      "content": "Researchers announced a breakthrough in solid-state battery technology that could dramatically extend battery life and reduce charging times. The prototype demonstrates improved thermal stability and scalability for mass production...",
+      "imageUrl": "https://images.unsplash.com/photo-1542601098-8fc114e148e8?q=80&w=1400&auto=format&fit=crop",
+      "category": "Science",
+      "date": "2025-08-02T11:30:00Z"
+    },
+    {
+      "id": "f3",
+      "title": "City Unveils Ambitious Urban Greening Plan",
+      "description": "Parks, bike lanes, and rooftop gardens to expand significantly.",
+      "content": "The city council approved a comprehensive urban greening initiative aimed at increasing green spaces by 25% over five years. The plan includes new parks, expanded bike lanes, and incentives for rooftop gardens to combat heat islands...",
+      "imageUrl": "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=1400&auto=format&fit=crop",
+      "category": "Local",
+      "date": "2025-08-03T08:15:00Z"
+    }
+  ],
+  "latest": [
+    {
+      "id": "l1",
+      "title": "Healthcare Startups See Record Funding",
+      "description": "Digital health solutions attract global investors.",
+      "content": "Healthcare startups focused on telemedicine and AI diagnostics reported record-breaking funding this quarter. Industry leaders attribute growth to increasing demand for remote care and efficiency in clinical workflows...",
+      "imageUrl": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1400&auto=format&fit=crop",
+      "category": "Health",
+      "date": "2025-08-04T10:00:00Z"
+    },
+    {
+      "id": "l2",
+      "title": "Wildlife Conservation Efforts Show Positive Trends",
+      "description": "Protected areas expand; species recovery noted.",
+      "content": "Conservationists reported encouraging signs of recovery for several endangered species, citing habitat restoration and anti-poaching measures. The expansion of protected areas has contributed to improved biodiversity indices...",
+      "imageUrl": "https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?q=80&w=1400&auto=format&fit=crop",
+      "category": "Environment",
+      "date": "2025-08-04T12:30:00Z"
+    },
+    {
+      "id": "l3",
+      "title": "Tech Giants Announce New Privacy Features",
+      "description": "Users gain more control over data sharing.",
+      "content": "In response to growing privacy concerns, several tech companies unveiled new features designed to give users greater control over data sharing. The updates include simplified controls, transparency dashboards, and stronger default protections...",
+      "imageUrl": "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1400&auto=format&fit=crop",
+      "category": "Technology",
+      "date": "2025-08-04T14:20:00Z"
+    }
+  ],
+  "sportsCategories": [
+    {"id": "sc1", "name": "Football", "icon": "football"},
+    {"id": "sc2", "name": "Cricket", "icon": "cricket"},
+    {"id": "sc3", "name": "Tennis", "icon": "tennis"},
+    {"id": "sc4", "name": "Basketball", "icon": "basketball"},
+    {"id": "sc5", "name": "Golf", "icon": "golf"},
+    {"id": "sc6", "name": "eSports", "icon": "esports"},
+    {"id": "sc7", "name": "Athletics", "icon": "other"},
+    {"id": "sc8", "name": "Rugby", "icon": "other"}
+  ],
+  "sportsArticles": [
+    {
+      "id": "s1",
+      "title": "Championship Final Ends in Dramatic Penalty Shootout",
+      "description": "Goalkeeper heroics seal the victory in a tense finale.",
+      "content": "In a thrilling conclusion to the season, the championship final was decided by a penalty shootout. The underdogs prevailed thanks to a series of remarkable saves by their goalkeeper. Fans celebrated late into the night as the trophy was lifted...",
+      "imageUrl": "https://images.unsplash.com/photo-1518091043644-c1d4457512c6?q=80&w=1400&auto=format&fit=crop",
+      "category": "Football",
+      "date": "2025-08-03T20:00:00Z"
+    },
+    {
+      "id": "s2",
+      "title": "Rising Star Claims First Grand Slam Title",
+      "description": "A new era begins in international tennis.",
+      "content": "The tennis world welcomed a new champion as the rising star captured their first Grand Slam title in commanding fashion. Their aggressive baseline play and composure under pressure won over crowds and commentators alike...",
+      "imageUrl": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1400&auto=format&fit=crop",
+      "category": "Tennis",
+      "date": "2025-08-02T18:00:00Z"
+    },
+    {
+      "id": "s3",
+      "title": "National Team Announces Squad for World Cup",
+      "description": "Veterans and fresh talent blend in the final roster.",
+      "content": "The national team unveiled its World Cup squad, featuring a balance of seasoned veterans and exciting newcomers. Coaches emphasized tactical flexibility and team chemistry as keys to success in the upcoming tournament...",
+      "imageUrl": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1400&auto=format&fit=crop",
+      "category": "Cricket",
+      "date": "2025-08-01T15:00:00Z"
+    }
+  ],
+  "entertainment": [
+    {
+      "id": "e1",
+      "title": "Blockbuster Sequel Shatters Opening Weekend Records",
+      "description": "Critics praise the spectacle and character development.",
+      "content": "The highly anticipated sequel exceeded expectations at the box office, setting new opening weekend records. Critics lauded the film's blend of action and heart, while audiences praised the expanded world-building and emotional stakes...",
+      "imageUrl": "https://images.unsplash.com/photo-1517602302552-471fe67acf66?q=80&w=1400&auto=format&fit=crop",
+      "category": "Movies",
+      "date": "2025-08-04T09:45:00Z"
+    },
+    {
+      "id": "e2",
+      "title": "Indie Artist Tops Charts with Surprise Album Drop",
+      "description": "A bold sound and intimate lyrics resonate worldwide.",
+      "content": "In a surprise move, a rising indie artist released a new album without prior announcement, captivating listeners with a bold sonic palette and deeply personal lyrics. Streaming numbers surged within hours of release...",
+      "imageUrl": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1400&auto=format&fit=crop",
+      "category": "Music",
+      "date": "2025-08-03T13:10:00Z"
+    },
+    {
+      "id": "e3",
+      "title": "Streaming Series Finale Sparks Fan Theories",
+      "description": "Ambiguous ending fuels spirited debates online.",
+      "content": "The finale of the hit streaming series left fans buzzing with theories as its ambiguous ending invited multiple interpretations. Showrunners hinted that clues throughout the season may point to the 'true' conclusion...",
+      "imageUrl": "https://images.unsplash.com/photo-1522869635100-9f4c4bd57536?q=80&w=1400&auto=format&fit=crop",
+      "category": "TV",
+      "date": "2025-08-02T21:00:00Z"
+    }
+  ],
+  "quotes": [
+    "News is what somebody somewhere wants to suppress; all the rest is advertising.",
+    "In seeking truth, you have to get both sides of a story.",
+    "Journalism is literature in a hurry.",
+    "Good journalism is good business."
+  ]
+}
