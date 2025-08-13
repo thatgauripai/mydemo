@@ -1,71 +1,107 @@
-import React, { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
-import { scheduleData } from '../data/schedule'
-import CircularTimer from '../components/CircularTimer'
-import '../styles/TimerPage.css'
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { scheduleData } from '../data/schedule';
+import CircularTimer from '../components/CircularTimer';
+import {
+  playStartSound,
+  playDuringSound,
+  playEndSound,
+  stopAllSounds
+} from '../utils/sound';
+import '../styles/TimerPage.css';
 
 const TimerPage = () => {
-  const { taskId } = useParams()
-  const navigate = useNavigate()
-  const task = scheduleData.find(t => t.id === taskId)
-  
-  const [timeLeft, setTimeLeft] = useState(task ? task.duration * 60 : 0) // Convert minutes to seconds
-  const [isRunning, setIsRunning] = useState(false)
-  const [isCompleted, setIsCompleted] = useState(false)
-  
-  const totalTime = task ? task.duration * 60 : 0
+  const { taskId } = useParams();
+  const navigate = useNavigate();
+  const task = scheduleData.find(t => t.id === taskId);
+
+  const [timeLeft, setTimeLeft] = useState(task ? task.duration * 60 : 0);
+  const [isRunning, setIsRunning] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(false);
+
+  const totalTime = task ? task.duration * 60 : 0;
 
   useEffect(() => {
-    let interval = null
+    let interval = null;
+
     if (isRunning && timeLeft > 0) {
       interval = setInterval(() => {
-        setTimeLeft(time => {
-          if (time <= 1) {
-            setIsRunning(false)
-            setIsCompleted(true)
-            return 0
+        setTimeLeft(prevTime => {
+          if (prevTime <= 1) {
+            clearInterval(interval);
+            setIsRunning(false);
+            setIsCompleted(true);
+            stopAllSounds();
+            playEndSound(); // ✅ play end sound
+            return 0;
           }
-          return time - 1
-        })
-      }, 1000)
-    } else if (!isRunning) {
-      clearInterval(interval)
+          return prevTime - 1;
+        });
+      }, 1000);
+    } else {
+      clearInterval(interval);
+      if (!isRunning) {
+        stopAllSounds(); // ✅ stop during sound on pause
+      }
     }
-    return () => clearInterval(interval)
-  }, [isRunning, timeLeft])
+
+    return () => clearInterval(interval);
+  }, [isRunning, timeLeft]);
 
   const handleStart = () => {
-    setIsRunning(true)
-  }
+    setIsRunning(true);
+    playStartSound();      // ✅ play start sound
+    playDuringSound();     // ✅ loop during sound
+  };
 
   const handlePause = () => {
-    setIsRunning(false)
-  }
+    setIsRunning(false);
+    stopAllSounds();       // ✅ stop sound when paused
+  };
 
   const handleReset = () => {
-    setIsRunning(false)
-    setTimeLeft(totalTime)
-    setIsCompleted(false)
-  }
+    setIsRunning(false);
+    setTimeLeft(totalTime);
+    setIsCompleted(false);
+    stopAllSounds();       // ✅ stop all sounds
+  };
+
+  const handleSkip10Seconds = () => {
+    setTimeLeft(prev => Math.max(prev - 10, 0));
+  };
 
   const handleBack = () => {
-    navigate('/')
-  }
+    stopAllSounds();       // ✅ stop all sounds
+    navigate('/');
+  };
 
   const handleTaskComplete = () => {
-    // Here you could save the completion status
-    navigate('/')
-  }
+    playStartSound();      // ✅ Play start sound when "Mark Complete"
+
+    const stored = localStorage.getItem('completedTaskIds');
+    const completedIds = stored ? JSON.parse(stored) : [];
+
+    if (!completedIds.includes(taskId)) {
+      completedIds.push(taskId);
+      localStorage.setItem('completedTaskIds', JSON.stringify(completedIds));
+    }
+
+    stopAllSounds();       // ✅ stop all sounds before navigating
+    navigate('/');
+  };
 
   const handleNextTask = () => {
-    const currentIndex = scheduleData.findIndex(t => t.id === taskId)
-    const nextTask = scheduleData[currentIndex + 1]
+    const currentIndex = scheduleData.findIndex(t => t.id === taskId);
+    const nextTask = scheduleData[currentIndex + 1];
+
+    stopAllSounds();       // ✅ stop all sounds before navigating
+
     if (nextTask) {
-      navigate(`/timer/${nextTask.id}`)
+      navigate(`/timer/${nextTask.id}`);
     } else {
-      navigate('/')
+      navigate('/');
     }
-  }
+  };
 
   if (!task) {
     return (
@@ -77,7 +113,7 @@ const TimerPage = () => {
           </button>
         </div>
       </div>
-    )
+    );
   }
 
   if (isCompleted) {
@@ -102,7 +138,7 @@ const TimerPage = () => {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -110,7 +146,7 @@ const TimerPage = () => {
       <button className="back-button" onClick={handleBack}>
         ← Back
       </button>
-      
+
       <div className="timer-container">
         <div className="task-header">
           <span className="task-icon-large">{task.icon}</span>
@@ -133,10 +169,13 @@ const TimerPage = () => {
           <button className="control-button secondary" onClick={handleReset}>
             Reset
           </button>
+          <button className="control-button secondary" onClick={handleSkip10Seconds}>
+            Skip 10s
+          </button>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TimerPage
+export default TimerPage;
