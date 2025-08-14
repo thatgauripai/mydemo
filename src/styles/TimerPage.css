@@ -1,56 +1,73 @@
+/* 
+  .timer-page - Uses Flexbox to center content both vertically & horizontally
+  Gradient Background - CSS linear-gradient for smooth color blending
+  Responsive Units - vh for height, %, px for spacing
+*/
 .timer-page {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  position: relative;
+  min-height: 100vh; /* Full viewport height */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* CSS Gradient */
+  display: flex; /* Flexbox layout */
+  align-items: center; /* Vertical centering */
+  justify-content: center; /* Horizontal centering */
+  padding: 20px; /* Internal spacing */
+  position: relative; /* For absolutely positioned child elements */
 }
 
+/* 
+  .timer-container - Glassmorphism effect using backdrop-filter and transparency
+  Rounded Corners & Shadows - Improves visual hierarchy
+*/
 .timer-container {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 25px;
-  padding: 40px;
-  text-align: center;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-  backdrop-filter: blur(10px);
-  max-width: 500px;
-  width: 100%;
+  background: rgba(255, 255, 255, 0.95); /* Semi-transparent white background */
+  border-radius: 25px; /* Rounded corners */
+  padding: 40px; /* Internal spacing */
+  text-align: center; /* Center align text */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1); /* Drop shadow */
+  backdrop-filter: blur(10px); /* Glassmorphism blur effect */
+  max-width: 500px; /* Responsive limit */
+  width: 100%; /* Full width up to max-width */
 }
 
+/* 
+  Back Button - Absolute positioning inside relative parent
+  Hover effects - CSS transitions for smooth animations
+*/
 .back-button {
-  position: absolute;
-  top: 30px;
+  position: absolute; /* Positioned relative to .timer-page */
+  top: 30px; 
   left: 30px;
-  background: rgba(255, 255, 255, 0.9);
-  border: none;
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent button */
+  border: none; /* Removes default border */
+  border-radius: 12px; /* Rounded corners */
   padding: 12px 20px;
-  cursor: pointer;
+  cursor: pointer; /* Pointer cursor on hover */
   font-size: 1rem;
   font-weight: 500;
   color: #4a5568;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: all 0.2s ease;
-  display: flex;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Soft shadow */
+  transition: all 0.2s ease; /* Smooth hover transition */
+  display: flex; /* Flex for icon & text */
   align-items: center;
-  gap: 8px;
+  gap: 8px; /* Space between icon and text */
 }
 
+/* Hover State - Transform & shadow change */
 .back-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  transform: translateY(-2px); /* Slight lift effect */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15); /* Stronger shadow */
   background: white;
 }
 
+/* 
+  .task-header - Basic block layout styling
+*/
 .task-header {
   margin-bottom: 40px;
 }
 
 .task-title {
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 700; /* Bold text */
   color: #2d3748;
   margin-bottom: 10px;
 }
@@ -62,12 +79,14 @@
 }
 
 .task-icon-large {
-  font-size: 4rem;
+  font-size: 4rem; /* Large emoji/icon size */
   margin-bottom: 20px;
-  display: block;
+  display: block; /* Forces to start on a new line */
 }
 
-/* Circular Timer */
+/* 
+  Circular Timer - Positioned container for SVG graphics
+*/
 .circular-timer {
   position: relative;
   width: 250px;
@@ -75,33 +94,30 @@
   margin: 0 auto 40px;
 }
 
-.timer-circle {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
 .timer-circle svg {
   width: 100%;
   height: 100%;
-  transform: rotate(-90deg);
+  transform: rotate(-90deg); /* Rotates progress so it starts at top */
 }
 
 .timer-track {
-  fill: none;
-  stroke: #e2e8f0;
+  fill: none; /* No fill for circle */
+  stroke: #e2e8f0; /* Light gray track */
   stroke-width: 8;
 }
 
 .timer-progress {
   fill: none;
-  stroke: #4299e1;
+  stroke: #4299e1; /* Blue progress */
   stroke-width: 8;
-  stroke-linecap: round;
-  transition: stroke-dasharray 1s ease;
-  filter: drop-shadow(0 0 8px rgba(66, 153, 225, 0.3));
+  stroke-linecap: round; /* Rounded line edges */
+  transition: stroke-dasharray 1s ease; /* Smooth progress animation */
+  filter: drop-shadow(0 0 8px rgba(66, 153, 225, 0.3)); /* Glow effect */
 }
 
+/* 
+  Timer Display - Absolute centering with transform trick
+*/
 .timer-display {
   position: absolute;
   top: 50%;
@@ -115,7 +131,7 @@
   font-weight: 700;
   color: #2d3748;
   margin-bottom: 5px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', monospace; /* Digital clock style font */
 }
 
 .time-label {
@@ -124,7 +140,10 @@
   font-weight: 500;
 }
 
-/* Timer Controls */
+/* 
+  Timer Controls - Flexbox layout with gap
+  Button states - primary & secondary color themes
+*/
 .timer-controls {
   display: flex;
   justify-content: center;
@@ -151,30 +170,19 @@
   box-shadow: 0 6px 20px rgba(66, 153, 225, 0.4);
 }
 
-.control-button:active {
-  transform: translateY(0);
-}
-
 .control-button.secondary {
   background: #718096;
   box-shadow: 0 4px 15px rgba(113, 128, 150, 0.3);
 }
 
-.control-button.secondary:hover {
-  box-shadow: 0 6px 20px rgba(113, 128, 150, 0.4);
-}
-
-/* Success Message */
-.success-message {
-  text-align: center;
-  padding: 60px 40px;
-}
-
+/* 
+  Success Message - Includes CSS animation (keyframes bounce)
+*/
 .success-icon {
   font-size: 5rem;
   margin-bottom: 30px;
   display: block;
-  animation: bounce 1s ease infinite alternate;
+  animation: bounce 1s ease infinite alternate; /* Infinite bounce effect */
 }
 
 @keyframes bounce {
@@ -182,120 +190,12 @@
   100% { transform: translateY(-10px); }
 }
 
-.success-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #38a169;
-  margin-bottom: 15px;
-}
-
-.success-subtitle {
-  font-size: 1.3rem;
-  color: #4a5568;
-  margin-bottom: 40px;
-}
-
-.completion-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.completion-button {
-  background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
-  border: none;
-  border-radius: 12px;
-  padding: 15px 30px;
-  color: white;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(56, 161, 105, 0.3);
-  transition: all 0.2s ease;
-}
-
-.completion-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(56, 161, 105, 0.4);
-}
-
-.completion-button.secondary {
-  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
-  box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
-}
-
-.completion-button.secondary:hover {
-  box-shadow: 0 6px 20px rgba(66, 153, 225, 0.4);
-}
-
-/* Responsive Design */
+/* 
+  Responsive Design - Media queries to adjust layout & typography
+*/
 @media (max-width: 768px) {
-  .timer-page {
-    padding: 10px;
-  }
-  
-  .timer-container {
-    padding: 30px 20px;
-  }
-  
-  .back-button {
-    top: 20px;
-    left: 20px;
-    padding: 10px 16px;
-    font-size: 0.9rem;
-  }
-  
-  .task-title {
-    font-size: 1.8rem;
-  }
-  
-  .circular-timer {
-    width: 200px;
-    height: 200px;
-  }
-  
-  .time-remaining {
-    font-size: 2.5rem;
-  }
-  
   .timer-controls {
     flex-direction: column;
     gap: 15px;
-  }
-  
-  .control-button {
-    width: 100%;
-  }
-  
-  .success-title {
-    font-size: 2rem;
-  }
-  
-  .completion-buttons {
-    flex-direction: column;
-  }
-  
-  .completion-button {
-    width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .circular-timer {
-    width: 180px;
-    height: 180px;
-  }
-  
-  .time-remaining {
-    font-size: 2rem;
-  }
-  
-  .task-icon-large {
-    font-size: 3rem;
-  }
-  
-  .success-icon {
-    font-size: 4rem;
   }
 }

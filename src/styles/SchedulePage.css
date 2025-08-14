@@ -1,13 +1,14 @@
+/* Styling - full page layout */
 .schedule-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Styling - gradient background */
+  padding: 20px; /* Styling - spacing */
 }
 
-/* Header Section */
+/* Styling - header section with gradient background and rounded edges */
 .schedule-header {
   background: linear-gradient(135deg, #4f6bef 0%, #5a67d8 100%);
-  border-radius: 20px;
+  border-radius: 20px; /* Styling - rounded corners */
   padding: 30px;
   margin-bottom: 30px;
   color: white;
@@ -15,6 +16,7 @@
   overflow: hidden;
 }
 
+/* Styling - decorative background pattern for header */
 .schedule-header::before {
   content: '';
   position: absolute;
@@ -22,20 +24,22 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  background: url('data:image/svg+xml,<svg ...</svg>');
   opacity: 0.3;
 }
 
+/* Styling - flex layout for header content */
 .header-content {
   position: relative;
   z-index: 1;
-  display: flex;
+  display: flex; /* Styling - flexbox */
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
 }
 
+/* Styling - typography for title */
 .header-left h1 {
   font-size: 2.5rem;
   font-weight: 700;
@@ -43,6 +47,7 @@
   text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* Styling - subtext styling */
 .header-left .date {
   font-size: 1.1rem;
   opacity: 0.9;
@@ -55,6 +60,7 @@
   text-align: right;
 }
 
+/* Styling - large time display */
 .current-time {
   font-size: 3rem;
   font-weight: 700;
@@ -67,7 +73,7 @@
   opacity: 0.9;
 }
 
-/* Progress Section */
+/* Styling - progress section container */
 .progress-section {
   background: white;
   border-radius: 15px;
@@ -76,6 +82,7 @@
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
+/* Styling - flex layout for progress section header */
 .progress-header {
   display: flex;
   justify-content: space-between;
@@ -101,6 +108,7 @@
   font-size: 1.2rem;
 }
 
+/* Styling - progress bar */
 .progress-bar {
   width: 100%;
   height: 10px;
@@ -110,6 +118,7 @@
   margin-bottom: 15px;
 }
 
+/* Styling - progress fill animation */
 .progress-fill {
   height: 100%;
   background: linear-gradient(90deg, #4299e1 0%, #3182ce 100%);
@@ -123,7 +132,7 @@
   text-align: right;
 }
 
-/* Up Next Section */
+/* Styling - up next section */
 .up-next-section {
   margin-bottom: 30px;
 }
@@ -143,6 +152,7 @@
   font-size: 1.5rem;
 }
 
+/* Styling - up next card design */
 .up-next-card {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 15px;
@@ -203,7 +213,7 @@
   gap: 5px;
 }
 
-/* Task Grid */
+/* Styling - task grid layout */
 .task-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -279,7 +289,7 @@
   font-size: 0.9rem;
 }
 
-/* Responsive Design */
+/* Styling - responsive design for tablets */
 @media (max-width: 768px) {
   .schedule-page {
     padding: 10px;
@@ -326,6 +336,7 @@
   }
 }
 
+/* Styling - responsive design for mobile */
 @media (max-width: 480px) {
   .task-content,
   .up-next-content {

@@ -1,7 +1,11 @@
-import React from "react";
+import React from "react"; 
+// Importing React library - required for JSX and creating components
 
-const UsecasePage = () => {
+const UsecasePage = () => { 
+  // Functional Component (Stateless Component) - no internal state, just renders UI
+
   const features = [
+    // Array of Objects - Data structure used for rendering list items dynamically
     {
       title: "Visual Cues",
       emoji: "🎨",
@@ -25,7 +29,9 @@ const UsecasePage = () => {
   ];
 
   return (
+    // JSX syntax - allows writing HTML-like elements inside JavaScript
     <div
+      // Inline Styling - applying CSS directly via the style prop
       style={{
         minHeight: "100vh",
         background: "linear-gradient(to bottom right, #4f78baff, #c2e9fb)",
@@ -35,6 +41,7 @@ const UsecasePage = () => {
       }}
     >
       <div
+        // Styling for container box
         style={{
           maxWidth: "900px",
           backgroundColor: "#ffffff",
@@ -44,6 +51,7 @@ const UsecasePage = () => {
         }}
       >
         <h1
+          // Styled heading
           style={{
             textAlign: "center",
             marginBottom: "10px",
@@ -54,6 +62,7 @@ const UsecasePage = () => {
           About the Use Case
         </h1>
         <p
+          // Styled paragraph
           style={{
             textAlign: "center",
             color: "#4a5568",
@@ -66,6 +75,7 @@ const UsecasePage = () => {
         </p>
 
         <div
+          // CSS Grid layout for responsive design
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
@@ -74,6 +84,8 @@ const UsecasePage = () => {
           }}
         >
           {features.map((feature, index) => (
+            // List Rendering in React using .map()
+            // Keys - 'key={index}' is used to help React identify list elements
             <div
               key={index}
               style={{
@@ -85,15 +97,20 @@ const UsecasePage = () => {
                 transition: "transform 0.2s",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+              // Event Handling - onMouseEnter triggers scale animation
               onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+              // Event Handling - onMouseLeave resets scale
             >
               <div style={{ fontSize: "2rem", marginBottom: "10px" }}>
+                {/* Using props-like object data to render emoji */}
                 {feature.emoji}
               </div>
               <h3 style={{ marginBottom: "10px", color: "#2d3748" }}>
+                {/* Rendering title from the features array */}
                 {feature.title}
               </h3>
               <p style={{ color: "#4a5568", fontSize: "0.95rem" }}>
+                {/* Rendering description from the features array */}
                 {feature.description}
               </p>
             </div>
@@ -101,6 +118,7 @@ const UsecasePage = () => {
         </div>
 
         <div
+          // Styled footer message
           style={{
             background: "linear-gradient(to right, #f6d365, #fda085)",
             padding: "20px",
@@ -118,4 +136,5 @@ const UsecasePage = () => {
   );
 };
 
-export default UsecasePage;
+export default UsecasePage; 
+// Exporting the component so it can be used in other files

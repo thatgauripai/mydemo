@@ -1,32 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { scheduleData } from '../data/schedule';
-import CircularTimer from '../components/CircularTimer';
+import React, { useState, useEffect } from 'react'; // Components, State Management, State Management Using React Hooks, Component Life Cycle Using React Hooks
+import { useParams, useNavigate } from 'react-router-dom'; // Routing
+import { scheduleData } from '../data/schedule'; // Component Collection (importing shared data)
+import CircularTimer from '../components/CircularTimer'; // Using Newly Created Components
 import {
   playStartSound,
   playDuringSound,
   playEndSound,
   stopAllSounds
-} from '../utils/sound';
-import '../styles/TimerPage.css';
+} from '../utils/sound'; // Component Collection (utility imports)
+import '../styles/TimerPage.css'; // Styling
 
-//component for the timer page
-// This component displays a timer for a specific task, allowing users to start, pause, reset, and skip time.
+// Components - defining a functional component
+// Layout Component - acts as a page layout for the timer view
+// Routing - uses route parameters and navigation
+// State Management Using React Hooks - manages UI state with useState
+// Component Life Cycle Using React Hooks - uses useEffect for timer updates
+// Conditional Rendering - renders different UI for active, completed, and not found states
+// Event Management - user interactions (start, pause, reset, skip, navigation)
+// Creating an Event–Aware Component - responds to clicks and timer events
+// Controlled Component - timer display depends entirely on React state
+// Lists & Keys - uses array search and mapping concepts for navigation between tasks
 const TimerPage = () => {
-  const { taskId } = useParams();
-  const navigate = useNavigate();
-  const task = scheduleData.find(t => t.id === taskId);
+  const { taskId } = useParams(); // Routing - reading route parameter
+  const navigate = useNavigate(); // Routing - navigation hook
+  const task = scheduleData.find(t => t.id === taskId); // Lists - finding the matching task
 
-  const [timeLeft, setTimeLeft] = useState(task ? task.duration * 60 : 0);
-  const [isRunning, setIsRunning] = useState(false);
-  const [isCompleted, setIsCompleted] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(task ? task.duration * 60 : 0); // State Management
+  const [isRunning, setIsRunning] = useState(false); // State Management
+  const [isCompleted, setIsCompleted] = useState(false); // State Management
 
-  const totalTime = task ? task.duration * 60 : 0;
+  const totalTime = task ? task.duration * 60 : 0; // Properties - calculated from data
 
-  useEffect(() => {
+  useEffect(() => { // Component Life Cycle Using React Hooks
     let interval = null;
 
-    if (isRunning && timeLeft > 0) {
+    if (isRunning && timeLeft > 0) { // Conditional Rendering logic
       interval = setInterval(() => {
         setTimeLeft(prevTime => {
           if (prevTime <= 1) {
@@ -34,7 +42,7 @@ const TimerPage = () => {
             setIsRunning(false);
             setIsCompleted(true);
             stopAllSounds();
-            playEndSound(); // ✅ play end sound
+            playEndSound(); // Event Management - play sound on timer end
             return 0;
           }
           return prevTime - 1;
@@ -43,44 +51,44 @@ const TimerPage = () => {
     } else {
       clearInterval(interval);
       if (!isRunning) {
-        stopAllSounds(); // ✅ stop during sound on pause
+        stopAllSounds(); // Event Management - stop sound when paused
       }
     }
 
-    return () => clearInterval(interval);
+    return () => clearInterval(interval); // Component Cleanup in life cycle
   }, [isRunning, timeLeft]);
 
-  const handleStart = () => {
+  const handleStart = () => { // Event Management
     setIsRunning(true);
-    playStartSound();      // ✅ play start sound
-    playDuringSound();     // ✅ loop during sound
+    playStartSound();      // Event Management
+    playDuringSound();     // Event Management
   };
 
-  const handlePause = () => {
+  const handlePause = () => { // Event Management
     setIsRunning(false);
-    stopAllSounds();       // ✅ stop sound when paused
+    stopAllSounds();
   };
 
-  const handleReset = () => {
+  const handleReset = () => { // Event Management
     setIsRunning(false);
     setTimeLeft(totalTime);
     setIsCompleted(false);
-    stopAllSounds();       // ✅ stop all sounds
+    stopAllSounds();
   };
 
-  const handleSkip10Seconds = () => {
+  const handleSkip10Seconds = () => { // Event Management
     setTimeLeft(prev => Math.max(prev - 10, 0));
   };
 
-  const handleBack = () => {
-    stopAllSounds();       // ✅ stop all sounds
+  const handleBack = () => { // Event Management, Routing
+    stopAllSounds();
     navigate('/');
   };
 
-  const handleTaskComplete = () => {
-    playStartSound();      // ✅ Play start sound when "Mark Complete"
+  const handleTaskComplete = () => { // Event Management
+    playStartSound(); // Event Management
 
-    const stored = localStorage.getItem('completedTaskIds');
+    const stored = localStorage.getItem('completedTaskIds'); // Http Client Programming (local storage operations)
     const completedIds = stored ? JSON.parse(stored) : [];
 
     if (!completedIds.includes(taskId)) {
@@ -88,15 +96,15 @@ const TimerPage = () => {
       localStorage.setItem('completedTaskIds', JSON.stringify(completedIds));
     }
 
-    stopAllSounds();       // ✅ stop all sounds before navigating
+    stopAllSounds();
     navigate('/');
   };
 
-  const handleNextTask = () => {
+  const handleNextTask = () => { // Event Management, Lists
     const currentIndex = scheduleData.findIndex(t => t.id === taskId);
     const nextTask = scheduleData[currentIndex + 1];
 
-    stopAllSounds();       // ✅ stop all sounds before navigating
+    stopAllSounds();
 
     if (nextTask) {
       navigate(`/timer/${nextTask.id}`);
@@ -105,7 +113,7 @@ const TimerPage = () => {
     }
   };
 
-  if (!task) {
+  if (!task) { // Conditional Rendering
     return (
       <div className="timer-page">
         <div className="timer-container">
@@ -118,7 +126,7 @@ const TimerPage = () => {
     );
   }
 
-  if (isCompleted) {
+  if (isCompleted) { // Conditional Rendering
     return (
       <div className="timer-page">
         <button className="back-button" onClick={handleBack}>
@@ -156,10 +164,11 @@ const TimerPage = () => {
           <p className="task-description">{task.description}</p>
         </div>
 
+        {/* Using Newly Created Components, Creating Components using Properties */}
         <CircularTimer timeLeft={timeLeft} totalTime={totalTime} />
 
         <div className="timer-controls">
-          {!isRunning ? (
+          {!isRunning ? ( // Conditional Rendering
             <button className="control-button" onClick={handleStart}>
               {timeLeft === totalTime ? 'Start' : 'Resume'}
             </button>
@@ -180,4 +189,4 @@ const TimerPage = () => {
   );
 };
 
-export default TimerPage;
+export default TimerPage; // Using Newly Created Components

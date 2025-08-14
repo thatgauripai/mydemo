@@ -1,12 +1,14 @@
 export const scheduleData = [
+  // Lists - An array of objects that can be rendered in the UI using map()
+  // Keys - Each object has a unique 'id' that can be used as a React key
   {
-    id: 'brush-teeth',
+    id: 'brush-teeth', // Unique key for list rendering
     title: 'Brush Teeth',
     description: 'Brush your teeth for 2 minutes',
     time: '7:00 AM',
     duration: 2, // in minutes
     icon: '🪥',
-    isUpNext: true
+    isUpNext: true // Can be used for Conditional Rendering
   },
   {
     id: 'get-dressed',
@@ -99,6 +101,8 @@ export const scheduleData = [
 ]
 
 export const getCurrentTime = () => {
+  //  Stateless Component Logic - Function returns data, no state
+  // State Management Using React Hooks (indirectly when used with useState)
   const now = new Date()
   return now.toLocaleTimeString('en-US', { 
     hour: 'numeric', 
@@ -108,6 +112,7 @@ export const getCurrentTime = () => {
 }
 
 export const getCurrentDate = () => {
+  //  Stateless Component Logic - Pure function returns a value
   const now = new Date()
   return now.toLocaleDateString('en-US', { 
     weekday: 'long', 
