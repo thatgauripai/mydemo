@@ -10,6 +10,8 @@ import {
 } from '../utils/sound';
 import '../styles/TimerPage.css';
 
+//component for the timer page
+// This component displays a timer for a specific task, allowing users to start, pause, reset, and skip time.
 const TimerPage = () => {
   const { taskId } = useParams();
   const navigate = useNavigate();

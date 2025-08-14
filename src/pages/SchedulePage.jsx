@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { scheduleData, getCurrentTime, getCurrentDate } from '../data/schedule'
 import '../styles/SchedulePage.css'
 
+//component for the schedule page
+// This component displays the daily schedule, including a progress bar, up next task, and a grid of all tasks.
 const SchedulePage = () => {
   const [currentTime, setCurrentTime] = useState(getCurrentTime())
   const [completedTaskIds, setCompletedTaskIds] = useState([]) // Track completed tasks
